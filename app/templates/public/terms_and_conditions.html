@@ -1,0 +1,31 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+{% set hero_eyebrow = "Terms and Conditions" %}
+{% set hero_title = "Terms governing access to this website and related engagements." %}
+{% set hero_text = "This page provides a structured legal template area for terms, service conditions, and website use guidelines." %}
+{% include "public/partials/hero_section.html" %}
+
+<section class="mx-auto max-w-5xl px-5 py-16 md:px-8">
+    <div class="rounded-[2rem] border border-white/6 bg-slate-900/70 p-8 md:p-12">
+        <div class="space-y-10 text-sm leading-8 text-slate-300">
+            <section>
+                <h2 class="font-['Space_Grotesk'] text-2xl font-semibold text-white">Use of Website</h2>
+                <p class="mt-4">By accessing this website, you agree to use it only for lawful purposes and in a manner that does not interfere with site security, functionality, or other users.</p>
+            </section>
+            <section>
+                <h2 class="font-['Space_Grotesk'] text-2xl font-semibold text-white">Service Discussions and Proposals</h2>
+                <p class="mt-4">Information presented on this site is for general business and informational purposes. Any project engagement, proposal, or delivery commitment is subject to separate written agreement.</p>
+            </section>
+            <section>
+                <h2 class="font-['Space_Grotesk'] text-2xl font-semibold text-white">Intellectual Property</h2>
+                <p class="mt-4">Unless otherwise stated, website content, branding, and materials are owned by NeuralShield Digital or used with appropriate permission.</p>
+            </section>
+            <section>
+                <h2 class="font-['Space_Grotesk'] text-2xl font-semibold text-white">Contact</h2>
+                <p class="mt-4">Questions regarding these terms can be directed to <a class="text-cyan-300" href="mailto:contact@neuralshielddigital.com">contact@neuralshielddigital.com</a>.</p>
+            </section>
+        </div>
+    </div>
+</section>
+{% endblock %}

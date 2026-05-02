@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{% if page_title %}{{ page_title }} | {% endif %}NeuralShield Digital</title>
+<meta name="description" content="{{ meta_description or 'NeuralShield Digital builds enterprise AI, automation, machine learning, and modern technology systems.' }}">
+{% if meta_keywords %}<meta name="keywords" content="{{ meta_keywords }}">{% endif %}
+<meta name="robots" content="{{ robots or 'index,follow' }}">
+
+<link rel="canonical" href="{{ canonical_url or ('https://' ~ settings.domain ~ request.url.path) }}">
+<link rel="icon" href="/static/favicon/favicon.ico">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NeuralShield Digital">
+<meta property="og:title" content="{{ og_title or page_title or 'NeuralShield Digital' }}">
+<meta property="og:description" content="{{ og_description or meta_description or '' }}">
+<meta property="og:url" content="{{ canonical_url or ('https://' ~ settings.domain ~ request.url.path) }}">
+{% if og_image %}<meta property="og:image" content="{{ og_image }}">{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ twitter_title or og_title or page_title or 'NeuralShield Digital' }}">
+<meta name="twitter:description" content="{{ twitter_description or og_description or meta_description or '' }}">
+{% if og_image %}<meta name="twitter:image" content="{{ og_image }}">{% endif %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/static/css/site-build.css">
+<link rel="stylesheet" href="/static/css/site.css">
+
+{% if schema_json %}
+<script type="application/ld+json">{{ schema_json | safe }}</script>
+{% endif %}

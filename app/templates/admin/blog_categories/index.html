@@ -1,0 +1,52 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<div class="grid gap-6 xl:grid-cols-[0.42fr_0.58fr]">
+    <section class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="font-['Space_Grotesk'] text-xl font-semibold text-slate-950">Create Category</h2>
+        <p class="mt-1 text-sm text-slate-500">Use categories to group blog posts by topic or theme.</p>
+        <form method="post" action="/admin/blog/categories/create" class="mt-6 grid gap-4">
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Name</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="name" value="{{ form_data.name }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Slug</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="slug" value="{{ form_data.slug }}">
+                {% if form_errors.slug %}<p class="mt-2 text-sm text-red-600">{{ form_errors.slug[0] }}</p>{% endif %}
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Description</label>
+                <textarea class="min-h-32 w-full rounded-xl border border-slate-300 px-4 py-3" name="description">{{ form_data.description }}</textarea>
+            </div>
+            <button class="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white" type="submit">Create Category</button>
+        </form>
+    </section>
+
+    <section class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 class="font-['Space_Grotesk'] text-xl font-semibold text-slate-950">Existing Categories</h2>
+                <p class="mt-1 text-sm text-slate-500">Edit names, slugs, and short descriptions.</p>
+            </div>
+        </div>
+
+        <div class="mt-6 space-y-4">
+            {% for category in categories %}
+            <form method="post" action="/admin/blog/categories/{{ category.id }}/edit" class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <div class="grid gap-4">
+                    <input class="rounded-xl border border-slate-300 px-4 py-3" name="name" value="{{ category.name }}">
+                    <input class="rounded-xl border border-slate-300 px-4 py-3" name="slug" value="{{ category.slug }}">
+                    <textarea class="min-h-24 rounded-xl border border-slate-300 px-4 py-3" name="description">{{ category.description or '' }}</textarea>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button class="rounded-xl bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white" type="submit">Save</button>
+                    <button class="rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-700" formaction="/admin/blog/categories/{{ category.id }}/delete" formmethod="post" type="submit">Delete</button>
+                </div>
+            </form>
+            {% else %}
+            <div class="rounded-2xl border border-dashed border-slate-300 px-5 py-6 text-sm text-slate-500">No categories created yet.</div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<form method="post" class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm">
+    <div class="grid gap-6 xl:grid-cols-2">
+        <div class="space-y-5">
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Page Key</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="page_key" value="{{ form_data.page_key }}">
+                {% if form_errors.page_key %}<p class="mt-2 text-sm text-red-600">{{ form_errors.page_key[0] }}</p>{% endif %}
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Page Type</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="page_type" value="{{ form_data.page_type }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Object ID</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="object_id" value="{{ form_data.object_id }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Page Path</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="page_path" value="{{ form_data.page_path }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Meta Title</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="meta_title" value="{{ form_data.meta_title }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Meta Description</label>
+                <textarea class="min-h-28 w-full rounded-xl border border-slate-300 px-4 py-3" name="meta_description">{{ form_data.meta_description }}</textarea>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Meta Keywords</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="meta_keywords" value="{{ form_data.meta_keywords }}">
+            </div>
+        </div>
+
+        <div class="space-y-5">
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Canonical URL</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="canonical_url" value="{{ form_data.canonical_url }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Robots</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="robots" value="{{ form_data.robots }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">OG Title</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="og_title" value="{{ form_data.og_title }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">OG Description</label>
+                <textarea class="min-h-28 w-full rounded-xl border border-slate-300 px-4 py-3" name="og_description">{{ form_data.og_description }}</textarea>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">OG Image</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="og_image" value="{{ form_data.og_image }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Twitter Title</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="twitter_title" value="{{ form_data.twitter_title }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Twitter Description</label>
+                <textarea class="min-h-28 w-full rounded-xl border border-slate-300 px-4 py-3" name="twitter_description">{{ form_data.twitter_description }}</textarea>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Twitter Image</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="twitter_image" value="{{ form_data.twitter_image }}">
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-6">
+        <label class="mb-2 block text-sm font-medium text-slate-700">Schema JSON</label>
+        <textarea class="min-h-52 w-full rounded-xl border border-slate-300 px-4 py-3 font-mono text-sm" name="schema_json">{{ form_data.schema_json }}</textarea>
+    </div>
+
+    <div class="mt-8 flex gap-3">
+        <button class="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white" type="submit">Save SEO Metadata</button>
+        <a class="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700" href="/admin/seo">Cancel</a>
+    </div>
+</form>
+{% endblock %}

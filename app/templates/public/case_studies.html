@@ -1,0 +1,30 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+{% set hero_eyebrow = "Case Studies and Portfolio" %}
+{% set hero_title = "Selected work, delivery snapshots, and measurable outcomes." %}
+{% set hero_text = "We showcase high-value engagements that demonstrate how strategy, AI, engineering, and operational execution come together." %}
+{% include "public/partials/hero_section.html" %}
+
+<section class="mx-auto max-w-7xl px-5 py-16 md:px-8">
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {% for case_study in case_studies %}
+        <a href="/case-studies/{{ case_study.slug }}" class="group rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-7 transition hover:-translate-y-1 hover:border-cyan-300/25">
+            <div class="text-xs uppercase tracking-[0.24em] text-cyan-300">{{ case_study.industry or "Case Study" }}</div>
+            <h2 class="mt-4 font-['Space_Grotesk'] text-2xl font-semibold text-white">{{ case_study.title }}</h2>
+            <p class="mt-4 text-sm leading-7 text-slate-400">{{ case_study.challenge[:180] ~ ('...' if case_study.challenge|length > 180 else '') }}</p>
+            <div class="mt-6 text-sm font-semibold text-cyan-300">Read case study</div>
+        </a>
+        {% else %}
+        <div class="rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-7 text-slate-400 md:col-span-2 xl:col-span-3">
+            Published case studies will appear here when available.
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block pre_footer %}
+{% set cta_title = "Want to discuss a similar transformation, product build, or AI deployment challenge?" %}
+{% include "public/partials/cta_section.html" %}
+{% endblock %}

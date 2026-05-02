@@ -1,0 +1,12 @@
+{
+  "name": "neuralshielddigital-assets",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./app/static/css/tailwind.css -o ./app/static/css/site-build.css --minify",
+    "watch:css": "tailwindcss -i ./app/static/css/tailwind.css -o ./app/static/css/site-build.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}

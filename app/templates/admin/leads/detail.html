@@ -1,0 +1,30 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<h1 class="font-[Space_Grotesk] text-3xl font-bold">Lead Detail</h1>
+<div class="mt-8 grid gap-6 md:grid-cols-2">
+    <div class="rounded-3xl border border-white/5 bg-slate-900 p-6 text-slate-300">
+        <div class="space-y-3">
+            <p><span class="text-slate-500">Name:</span> {{ lead.full_name }}</p>
+            <p><span class="text-slate-500">Email:</span> {{ lead.email }}</p>
+            <p><span class="text-slate-500">Phone:</span> {{ lead.phone or "-" }}</p>
+            <p><span class="text-slate-500">Company:</span> {{ lead.company_name or "-" }}</p>
+            <p><span class="text-slate-500">Subject:</span> {{ lead.subject or "-" }}</p>
+            <p><span class="text-slate-500">Service Interest:</span> {{ lead.service_interest or "-" }}</p>
+            <p><span class="text-slate-500">Message:</span><br>{{ lead.message }}</p>
+        </div>
+    </div>
+    <form method="post" action="/admin/leads/{{ lead.id }}/update" class="rounded-3xl border border-white/5 bg-slate-900 p-6">
+        <h2 class="font-[Space_Grotesk] text-xl font-semibold">Update Lead</h2>
+        <div class="mt-6 grid gap-4">
+            <select class="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" name="status">{% for option in ["new","contacted","qualified","proposal_sent","won","lost","archived"] %}<option value="{{ option }}" {% if lead.status == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select>
+            <select class="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" name="priority">{% for option in ["low","normal","high"] %}<option value="{{ option }}" {% if lead.priority == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select>
+            <input class="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="budget_range" value="{{ lead.budget_range or '' }}" placeholder="Budget range">
+            <textarea class="min-h-40 rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" name="notes">{{ lead.notes or '' }}</textarea>
+            <button class="rounded-full bg-cyan-400 px-6 py-3 font-semibold text-slate-950" type="submit">Save</button>
+        </div>
+    </form>
+</div>
+<form class="mt-6" method="post" action="/admin/leads/{{ lead.id }}/delete">
+    <button class="rounded-xl border border-red-400/30 px-4 py-2 text-red-300" type="submit">Delete Lead</button>
+</form>
+{% endblock %}

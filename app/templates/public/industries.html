@@ -1,0 +1,48 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+{% set hero_eyebrow = "Industries" %}
+{% set hero_title = "Applying AI and software engineering across complex business environments." %}
+{% set hero_text = "We tailor our approach to operational realities, data maturity, compliance requirements, and organizational scale." %}
+{% include "public/partials/hero_section.html" %}
+
+<section class="mx-auto max-w-7xl px-5 py-16 md:px-8">
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {% set industries = [
+            ("Technology and SaaS", "AI copilots, workflow automation, internal tools, and product intelligence."),
+            ("Operations and Services", "Process automation, dashboards, knowledge systems, and AI-assisted decision support."),
+            ("Manufacturing and Industrial", "Vision use cases, anomaly detection, predictive insights, and process optimization."),
+            ("Financial and Risk-led Teams", "DLP-informed workflows, document intelligence, compliance support, and secure automation."),
+            ("Healthcare and Research", "NLP pipelines, structured extraction, computer vision support, and ML experimentation."),
+            ("Enterprise Transformation", "Cross-functional AI strategy, platform planning, DevOps alignment, and modernization delivery.")
+        ] %}
+        {% for title, description in industries %}
+        <div class="rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-7">
+            <h2 class="font-['Space_Grotesk'] text-2xl font-semibold text-white">{{ title }}</h2>
+            <p class="mt-4 text-sm leading-7 text-slate-400">{{ description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="mx-auto max-w-7xl px-5 py-16 md:px-8">
+    <div class="rounded-[2rem] border border-cyan-400/12 bg-slate-900/70 p-8">
+        <p class="text-xs uppercase tracking-[0.28em] text-cyan-300">Supporting Capabilities</p>
+        <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {% for service in featured_services %}
+            <a href="/services/{{ service.slug }}" class="rounded-2xl border border-white/6 bg-slate-950/60 p-5 transition hover:border-cyan-300/25">
+                <div class="font-semibold text-white">{{ service.name }}</div>
+                <p class="mt-2 text-sm leading-7 text-slate-400">{{ service.short_description }}</p>
+            </a>
+            {% else %}
+            <div class="rounded-2xl border border-white/6 bg-slate-950/60 p-5 text-sm text-slate-400 md:col-span-2 xl:col-span-3">Capability cards will appear here once services are published.</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block pre_footer %}
+{% set cta_title = "Need industry-specific AI architecture, workflow design, or product planning?" %}
+{% include "public/partials/cta_section.html" %}
+{% endblock %}

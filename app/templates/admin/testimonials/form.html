@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<form method="post" class="max-w-4xl rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm">
+    <div class="grid gap-6 md:grid-cols-2">
+        <div class="space-y-5">
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Client Name</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="client_name" value="{{ form_data.client_name }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Company Name</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="company_name" value="{{ form_data.company_name }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Designation</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="designation" value="{{ form_data.designation }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Source URL</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="source_url" value="{{ form_data.source_url }}">
+            </div>
+        </div>
+
+        <div class="space-y-5">
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Rating</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" type="number" min="1" max="5" name="rating" value="{{ form_data.rating }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Display Order</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" type="number" name="display_order" value="{{ form_data.display_order }}">
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 space-y-3">
+                <label class="flex items-center gap-3 text-sm text-slate-700"><input type="checkbox" name="is_featured" {% if form_data.is_featured %}checked{% endif %}> Featured testimonial</label>
+                <label class="flex items-center gap-3 text-sm text-slate-700"><input type="checkbox" name="is_active" {% if form_data.is_active %}checked{% endif %}> Visible on website</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-6">
+        <label class="mb-2 block text-sm font-medium text-slate-700">Testimonial Text</label>
+        <textarea class="min-h-52 w-full rounded-xl border border-slate-300 px-4 py-3" name="testimonial_text">{{ form_data.testimonial_text }}</textarea>
+    </div>
+
+    <div class="mt-8 flex gap-3">
+        <button class="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white" type="submit">Save Testimonial</button>
+        <a class="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700" href="/admin/testimonials">Cancel</a>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,12 @@
+:root {
+    --nsd-bg: #020617;
+    --nsd-panel: #0f172a;
+    --nsd-accent: #22d3ee;
+    --nsd-accent-strong: #38bdf8;
+    --nsd-text: #f8fafc;
+}
+
+body {
+    background-color: var(--nsd-bg);
+    color: var(--nsd-text);
+}

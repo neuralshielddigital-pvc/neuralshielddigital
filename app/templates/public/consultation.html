@@ -1,0 +1,69 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+{% set hero_eyebrow = "Book Consultation" %}
+{% set hero_title = "Schedule a focused conversation around your AI roadmap." %}
+{% set hero_text = "Use this form when you want a strategic or technical discussion around AI products, automation, ML systems, or custom software delivery." %}
+{% include "public/partials/hero_section.html" %}
+
+<section class="mx-auto grid max-w-7xl gap-8 px-5 py-16 md:px-8 lg:grid-cols-[0.72fr_0.28fr]">
+    <form action="/book-consultation" method="post" class="rounded-[2rem] border border-white/6 bg-slate-900/70 p-8 shadow-[0_0_60px_rgba(34,211,238,0.05)]">
+        <div class="grid gap-5 md:grid-cols-2">
+            <div>
+                <label class="mb-2 block text-sm text-slate-300">Full name</label>
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="full_name" value="{{ form_data.full_name }}" required>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm text-slate-300">Email</label>
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="email" name="email" value="{{ form_data.email }}" required>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm text-slate-300">Phone / WhatsApp</label>
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="phone" value="{{ form_data.phone }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm text-slate-300">Company</label>
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="company_name" value="{{ form_data.company_name }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm text-slate-300">Consultation type</label>
+                <select class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" name="consultation_type">
+                    {% for option in ["strategy", "technical", "product"] %}
+                    <option value="{{ option }}" {% if form_data.consultation_type == option %}selected{% endif %}>{{ option|title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm text-slate-300">Timezone</label>
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="timezone" value="{{ form_data.timezone }}">
+            </div>
+            <div class="md:col-span-2">
+                <label class="mb-2 block text-sm text-slate-300">Preferred date and time</label>
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="datetime-local" name="preferred_datetime" value="{{ form_data.preferred_datetime }}">
+            </div>
+        </div>
+        <div class="mt-5">
+            <label class="mb-2 block text-sm text-slate-300">Project details</label>
+            <textarea class="min-h-48 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" name="project_details" required>{{ form_data.project_details }}</textarea>
+            {% if form_errors.project_details %}<p class="mt-2 text-sm text-red-300">{{ form_errors.project_details[0] }}</p>{% endif %}
+        </div>
+        <button class="mt-8 rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300" type="submit">Request Consultation</button>
+    </form>
+
+    <aside class="space-y-6">
+        <div class="rounded-[1.75rem] border border-cyan-400/12 bg-slate-900/70 p-6">
+            <p class="text-xs uppercase tracking-[0.24em] text-cyan-300">Best Used For</p>
+            <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-400">
+                <li>AI strategy and delivery planning</li>
+                <li>Product roadmap and architecture guidance</li>
+                <li>Implementation scoping and execution models</li>
+                <li>Modernization, automation, and technical discovery</li>
+            </ul>
+        </div>
+        <div class="rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-6">
+            <p class="text-xs uppercase tracking-[0.24em] text-cyan-300">What to Expect</p>
+            <p class="mt-4 text-sm leading-7 text-slate-400">We review your submission, understand the business context, and guide the discussion toward the most useful next step for your team.</p>
+        </div>
+    </aside>
+</section>
+{% endblock %}

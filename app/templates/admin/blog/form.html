@@ -1,0 +1,69 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<form method="post" class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm">
+    <div class="grid gap-6 xl:grid-cols-2">
+        <div class="space-y-5">
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Category</label>
+                <select class="w-full rounded-xl border border-slate-300 px-4 py-3" name="category_id">
+                    <option value="">No category</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}" {% if form_data.category_id|string == category.id|string %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Title</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="title" value="{{ form_data.title }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Slug</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="slug" value="{{ form_data.slug }}">
+                {% if form_errors.slug %}<p class="mt-2 text-sm text-red-600">{{ form_errors.slug[0] }}</p>{% endif %}
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Excerpt</label>
+                <textarea class="min-h-28 w-full rounded-xl border border-slate-300 px-4 py-3" name="excerpt">{{ form_data.excerpt }}</textarea>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Featured Image URL</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="featured_image" value="{{ form_data.featured_image }}">
+            </div>
+        </div>
+
+        <div class="space-y-5">
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Status</label>
+                <select class="w-full rounded-xl border border-slate-300 px-4 py-3" name="status">
+                    {% for option in ["draft","published","archived"] %}
+                    <option value="{{ option }}" {% if form_data.status == option %}selected{% endif %}>{{ option|title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Published At</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" type="datetime-local" name="published_at" value="{{ form_data.published_at }}">
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <label class="flex items-center gap-3 text-sm text-slate-700"><input type="checkbox" name="is_featured" {% if form_data.is_featured %}checked{% endif %}> Featured post</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-6 grid gap-5">
+        <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Content (Markdown)</label>
+            <textarea class="min-h-72 w-full rounded-xl border border-slate-300 px-4 py-3 font-mono text-sm" name="content_markdown">{{ form_data.content_markdown }}</textarea>
+        </div>
+        <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Content (Optional HTML Override)</label>
+            <textarea class="min-h-40 w-full rounded-xl border border-slate-300 px-4 py-3 font-mono text-sm" name="content_html">{{ form_data.content_html }}</textarea>
+        </div>
+    </div>
+
+    <div class="mt-8 flex gap-3">
+        <button class="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white" type="submit">Save Post</button>
+        <a class="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700" href="/admin/blog">Cancel</a>
+    </div>
+</form>
+{% endblock %}

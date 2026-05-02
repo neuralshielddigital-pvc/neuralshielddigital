@@ -1,0 +1,22 @@
+{% if form_success %}
+<section class="mx-auto max-w-7xl px-5 pt-6 md:px-8">
+    <div class="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-5 py-4 text-sm text-emerald-200">
+        Your submission was received successfully. Our team will get back to you soon.
+    </div>
+</section>
+{% endif %}
+
+{% if form_errors %}
+<section class="mx-auto max-w-7xl px-5 pt-6 md:px-8">
+    <div class="rounded-2xl border border-red-400/20 bg-red-500/10 px-5 py-4 text-sm text-red-200">
+        <div class="font-semibold text-red-100">Please review the highlighted fields and try again.</div>
+        <ul class="mt-2 space-y-1">
+            {% for field_name, messages in form_errors.items() %}
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endif %}

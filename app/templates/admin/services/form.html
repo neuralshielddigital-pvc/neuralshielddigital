@@ -1,0 +1,68 @@
+{% extends "admin/base.html" %}
+{% block content %}
+<form method="post" class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm">
+    <div class="grid gap-6 xl:grid-cols-2">
+        <div class="space-y-5">
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Service Name</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="name" value="{{ form_data.name }}" required>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Slug</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="slug" value="{{ form_data.slug }}" required>
+                {% if form_errors.slug %}<p class="mt-2 text-sm text-red-600">{{ form_errors.slug[0] }}</p>{% endif %}
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Tagline</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="tagline" value="{{ form_data.tagline }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Short Description</label>
+                <textarea class="min-h-28 w-full rounded-xl border border-slate-300 px-4 py-3" name="short_description">{{ form_data.short_description }}</textarea>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Full Description</label>
+                <textarea class="min-h-52 w-full rounded-xl border border-slate-300 px-4 py-3" name="full_description">{{ form_data.full_description }}</textarea>
+            </div>
+        </div>
+
+        <div class="space-y-5">
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Icon Name</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="icon_name" value="{{ form_data.icon_name }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Hero Title</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="hero_title" value="{{ form_data.hero_title }}">
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Hero Subtitle</label>
+                <textarea class="min-h-28 w-full rounded-xl border border-slate-300 px-4 py-3" name="hero_subtitle">{{ form_data.hero_subtitle }}</textarea>
+            </div>
+            <div class="grid gap-5 md:grid-cols-2">
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-slate-700">CTA Label</label>
+                    <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="cta_label" value="{{ form_data.cta_label }}">
+                </div>
+                <div>
+                    <label class="mb-2 block text-sm font-medium text-slate-700">CTA URL</label>
+                    <input class="w-full rounded-xl border border-slate-300 px-4 py-3" name="cta_url" value="{{ form_data.cta_url }}">
+                </div>
+            </div>
+            <div>
+                <label class="mb-2 block text-sm font-medium text-slate-700">Display Order</label>
+                <input class="w-full rounded-xl border border-slate-300 px-4 py-3" type="number" name="display_order" value="{{ form_data.display_order }}">
+            </div>
+            <div class="space-y-3 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <label class="flex items-center gap-3 text-sm text-slate-700"><input type="checkbox" name="is_active" {% if form_data.is_active %}checked{% endif %}> Active on public site</label>
+                <label class="flex items-center gap-3 text-sm text-slate-700"><input type="checkbox" name="is_featured" {% if form_data.is_featured %}checked{% endif %}> Featured service</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-8 flex gap-3">
+        <button class="rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white" type="submit">Save Service</button>
+        <a class="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700" href="/admin/services">Cancel</a>
+    </div>
+</form>
+{% endblock %}

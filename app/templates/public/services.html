@@ -1,0 +1,30 @@
+{% extends "public/base.html" %}
+
+{% block content %}
+{% set hero_eyebrow = "Services" %}
+{% set hero_title = "AI, software, and automation capabilities designed for real deployment." %}
+{% set hero_text = "From consulting and prototyping to enterprise delivery, we build systems that translate AI potential into measurable business capability." %}
+{% include "public/partials/hero_section.html" %}
+
+<section class="mx-auto max-w-7xl px-5 py-16 md:px-8">
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {% for service in services %}
+        <article class="group rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-7 transition hover:-translate-y-1 hover:border-cyan-300/25 hover:shadow-[0_0_45px_rgba(34,211,238,0.08)]">
+            <div class="inline-flex rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1 text-xs uppercase tracking-[0.24em] text-cyan-300">{{ service.icon_name or "AI" }}</div>
+            <h2 class="mt-5 font-['Space_Grotesk'] text-2xl font-semibold text-white">{{ service.name }}</h2>
+            {% if service.tagline %}<p class="mt-2 text-cyan-300">{{ service.tagline }}</p>{% endif %}
+            <p class="mt-4 text-sm leading-7 text-slate-400">{{ service.short_description }}</p>
+            <a href="/services/{{ service.slug }}" class="mt-6 inline-flex text-sm font-semibold text-cyan-300 transition group-hover:text-cyan-200">Read more</a>
+        </article>
+        {% else %}
+        <div class="rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-7 text-slate-400 md:col-span-2 xl:col-span-3">
+            Service offerings will appear here as they are published from the admin panel.
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block pre_footer %}
+{% include "public/partials/cta_section.html" %}
+{% endblock %}

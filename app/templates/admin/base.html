@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }} | NeuralShield Admin</title>
+    <link rel="stylesheet" href="/static/css/site-build.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-900">
+    <div class="grid min-h-screen lg:grid-cols-[280px_1fr]">
+        <aside class="border-r border-slate-200 bg-slate-950 text-slate-100">
+            <div class="p-6">
+                <div class="flex items-center gap-3">
+    <img src="/static/images/logo.png" alt="NeuralShield Digital Logo" style="height: 94px; width:auto; display:block;">
+    <div>
+        <div class="font-['Space_Grotesk'] text-lg font-bold">NeuralShield</div>
+        <div class="text-xs uppercase tracking-[0.22em] text-cyan-300/80">Digital Admin</div>
+    </div>
+</div>
+                <div class="mt-6 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-300">
+                    <div class="font-medium text-white">{{ admin.full_name if admin else "Administrator" }}</div>
+                    <div class="mt-1 text-xs uppercase tracking-[0.18em] text-cyan-300/80">{{ admin.role if admin else "Admin" }}</div>
+                </div>
+            </div>
+
+            <nav class="px-4 pb-6">
+                <div class="space-y-1 text-sm">
+                    <a class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white" href="/admin/dashboard">Dashboard</a>
+                    <a class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white" href="/admin/leads">Leads</a>
+                    <a class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white" href="/admin/bookings">Consultation Bookings</a>
+                    <a class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white" href="/admin/services">Services</a>
+                    <a class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white" href="/admin/products">Products</a>
+                    <a class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white" href="/admin/blog/categories">Blog Categories</a>
+                    <a class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white" href="/admin/blog">Blog Posts</a>
+                    <a class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white" href="/admin/testimonials">Testimonials</a>
+                    <a class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/5 hover:text-white" href="/admin/seo">SEO Metadata</a>
+                </div>
+
+                <form class="mt-6" method="post" action="/admin/logout">
+                    <button class="w-full rounded-xl border border-red-400/20 bg-red-500/10 px-4 py-3 text-left text-sm text-red-200 transition hover:bg-red-500/20" type="submit">
+                        Logout
+                    </button>
+                </form>
+            </nav>
+        </aside>
+
+        <main class="bg-slate-100">
+            <div class="border-b border-slate-200 bg-white/90 px-6 py-5 backdrop-blur md:px-8">
+                <div class="flex items-center justify-between gap-4">
+                    <div>
+                        <p class="text-xs uppercase tracking-[0.24em] text-slate-400">NeuralShield Digital</p>
+                        <h1 class="mt-1 font-['Space_Grotesk'] text-2xl font-bold text-slate-950">{{ page_title }}</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 py-8 md:px-8">
+                {% if success_message %}
+                <div class="mb-6 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4 text-sm text-emerald-700">
+                    {{ success_message }}
+                </div>
+                {% endif %}
+                {% if error_message %}
+                <div class="mb-6 rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-sm text-red-700">
+                    {{ error_message }}
+                </div>
+                {% endif %}
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>
