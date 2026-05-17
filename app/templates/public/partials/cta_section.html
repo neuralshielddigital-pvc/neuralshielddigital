@@ -1,20 +1,26 @@
 <section class="mx-auto max-w-7xl px-5 py-20 md:px-8">
-    <div class="relative overflow-hidden rounded-[2rem] border border-cyan-400/15 bg-[linear-gradient(135deg,rgba(14,25,43,0.94),rgba(9,18,32,0.98))] px-8 py-12 shadow-[0_0_80px_rgba(34,211,238,0.08)] md:px-12">
-        <div class="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.16),transparent_50%)]"></div>
-        <div class="relative max-w-3xl">
-            <p class="text-xs uppercase tracking-[0.3em] text-cyan-300">{{ cta_eyebrow or "Ready to Build" }}</p>
-            <h2 class="mt-4 font-['Space_Grotesk'] text-3xl font-bold leading-tight text-white md:text-4xl">
-                {{ cta_title or "Turn AI ambition into a secure, production-ready delivery plan." }}
-            </h2>
-            <p class="mt-5 max-w-2xl text-base leading-7 text-slate-300">
-                {{ cta_text or "Partner with NeuralShield Digital for strategy, engineering, and deployment that moves from concept to trusted execution." }}
-            </p>
-            <div class="mt-8 flex flex-wrap gap-4">
-                <a href="{{ cta_primary_url or '/book-consultation' }}" class="rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300">
+    <div class="relative overflow-hidden rounded-[2rem] border border-cyan-400/15 bg-[linear-gradient(135deg,rgba(7,14,26,0.98),rgba(10,22,37,0.92))] px-8 py-12 shadow-[0_0_90px_rgba(34,211,238,0.08)] md:px-12">
+        <div class="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.16),transparent_55%)]"></div>
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent"></div>
+        <div class="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <div class="max-w-3xl">
+                <p class="text-xs font-semibold uppercase tracking-[0.32em] text-cyan-300">{{ cta_eyebrow or "Ready to Build" }}</p>
+                <h2 class="mt-4 font-['Space_Grotesk'] text-3xl font-bold leading-tight text-white md:text-4xl">
+                    {{ cta_title or "Turn AI ambition into secure, production-ready execution." }}
+                </h2>
+                <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300">
+                    {{ cta_text or "Partner with NeuralShield Digital for strategy, software engineering, intelligent automation, and enterprise AI delivery that is built to be trusted." }}
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-4 lg:justify-end">
+                <a href="{{ cta_primary_url or '/book-consultation' }}" class="rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_0_32px_rgba(34,211,238,0.22)] transition hover:bg-cyan-300">
                     {{ cta_primary_label or "Book Consultation" }}
                 </a>
-                <a href="{{ cta_secondary_url or '/contact' }}" class="rounded-full border border-cyan-300/25 px-6 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/50 hover:text-cyan-300">
-                    {{ cta_secondary_label or "Contact Us" }}
+                <a href="{{ cta_secondary_url or '/services' }}" class="rounded-full border border-cyan-300/25 bg-white/5 px-6 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/50 hover:text-cyan-300">
+                    {{ cta_secondary_label or "Explore Services" }}
+                </a>
+                <a href="{{ cta_tertiary_url or 'https://app.neuralshielddigital.com/login' }}" class="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/30 hover:text-cyan-200">
+                    {{ cta_tertiary_label or "Launch SaaS Platform" }}
                 </a>
             </div>
         </div>

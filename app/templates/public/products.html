@@ -2,14 +2,18 @@
 
 {% block content %}
 {% set hero_eyebrow = "Products" %}
-{% set hero_title = "AI-powered products and automation platforms built for business impact." %}
-{% set hero_text = "Our product portfolio is designed to solve operational bottlenecks, accelerate intelligent workflows, and strengthen digital capabilities." %}
+{% set hero_title = "AI-powered products and automation platforms built for operational impact." %}
+{% set hero_text = "Our product portfolio is designed to strengthen internal workflows, knowledge operations, reporting systems, and intelligent business execution." %}
+{% set hero_primary_label = "Launch SaaS Platform" %}
+{% set hero_primary_url = "https://app.neuralshielddigital.com/login" %}
+{% set hero_secondary_label = "Book Consultation" %}
+{% set hero_secondary_url = "/book-consultation" %}
 {% include "public/partials/hero_section.html" %}
 
-<section class="mx-auto max-w-7xl px-5 py-16 md:px-8">
+<section class="mx-auto max-w-7xl px-5 py-20 md:px-8">
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {% for product in products %}
-        <article class="rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-7 transition hover:-translate-y-1 hover:border-cyan-300/25 hover:shadow-[0_0_45px_rgba(34,211,238,0.08)]">
+        <article class="rounded-[1.75rem] border border-white/8 bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(8,15,28,0.96))] p-7 transition hover:-translate-y-1 hover:border-cyan-300/25 hover:shadow-[0_0_45px_rgba(34,211,238,0.08)]">
             <div class="inline-flex rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1 text-xs uppercase tracking-[0.24em] text-cyan-300">{{ product.product_type }}</div>
             <h2 class="mt-5 font-['Space_Grotesk'] text-2xl font-semibold text-white">{{ product.name }}</h2>
             {% if product.tagline %}<p class="mt-2 text-cyan-300">{{ product.tagline }}</p>{% endif %}
@@ -17,15 +21,43 @@
             <a href="/products/{{ product.slug }}" class="mt-6 inline-flex text-sm font-semibold text-cyan-300">View product</a>
         </article>
         {% else %}
-        <div class="rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-7 text-slate-400 md:col-span-2 xl:col-span-3">
+        <div class="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-7 text-slate-400 md:col-span-2 xl:col-span-3">
             Published products will appear here when available.
         </div>
         {% endfor %}
     </div>
 </section>
+
+<section class="mx-auto max-w-7xl px-5 py-20 md:px-8">
+    <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="rounded-[2rem] border border-cyan-400/12 bg-[linear-gradient(180deg,rgba(8,15,28,0.96),rgba(5,10,18,0.92))] p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.32em] text-cyan-300">Product Mindset</p>
+            <h2 class="mt-4 font-['Space_Grotesk'] text-3xl font-bold text-white">Tools and platforms designed to become long-term business capability.</h2>
+            <p class="mt-5 text-base leading-8 text-slate-300">We think beyond feature delivery. Our products are shaped around adoption, integration fit, governance, and the ability to support real operational outcomes.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+            <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5">
+                <h3 class="font-['Space_Grotesk'] text-lg font-semibold text-white">Workflow acceleration</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-400">Reduce manual coordination and move work forward with automation-first operational tooling.</p>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5">
+                <h3 class="font-['Space_Grotesk'] text-lg font-semibold text-white">Decision support</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-400">Improve visibility and response speed with AI-enabled analytics and knowledge systems.</p>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5">
+                <h3 class="font-['Space_Grotesk'] text-lg font-semibold text-white">Private deployment options</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-400">Support enterprise delivery requirements with custom deployment and integration planning.</p>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5">
+                <h3 class="font-['Space_Grotesk'] text-lg font-semibold text-white">Extensible architecture</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-400">Build around APIs, workflows, and product evolution so your stack can adapt as needs grow.</p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block pre_footer %}
-{% set cta_title = "Want a custom AI product strategy or private deployment roadmap?" %}
+{% set cta_title = "Need a custom deployment model, product strategy, or enterprise integration layer?" %}
 {% include "public/partials/cta_section.html" %}
 {% endblock %}

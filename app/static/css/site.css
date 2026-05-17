@@ -1,12 +1,61 @@
 :root {
     --nsd-bg: #020617;
-    --nsd-panel: #0f172a;
+    --nsd-panel: #081221;
+    --nsd-panel-strong: #0b1727;
     --nsd-accent: #22d3ee;
     --nsd-accent-strong: #38bdf8;
     --nsd-text: #f8fafc;
+    --nsd-muted: #94a3b8;
+}
+
+html {
+    background: var(--nsd-bg);
 }
 
 body {
-    background-color: var(--nsd-bg);
+    background:
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.07), transparent 24%),
+        radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.06), transparent 18%),
+        linear-gradient(180deg, #020617 0%, #040b15 100%);
     color: var(--nsd-text);
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nsd-grid {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+}
+
+.nsd-noise {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2) 0, transparent 18%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.12) 0, transparent 16%),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,0.16) 0, transparent 14%);
+}
+
+main,
+footer,
+header {
+    position: relative;
+}
+
+::selection {
+    background: rgba(34, 211, 238, 0.3);
+    color: #fff;
 }

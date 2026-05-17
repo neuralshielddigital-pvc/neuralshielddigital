@@ -2,53 +2,66 @@
 
 {% block content %}
 {% set hero_eyebrow = "Contact" %}
-{% set hero_title = "Start the conversation." %}
-{% set hero_text = "Tell us what you are building, improving, or automating. We’ll help you understand the best next step." %}
+{% set hero_title = "Start the right AI, automation, or product conversation." %}
+{% set hero_text = "Tell us what you are building, modernizing, or automating. We'll help you understand the most useful next step for your team." %}
+{% set hero_primary_label = "Book Consultation" %}
+{% set hero_primary_url = "/book-consultation" %}
+{% set hero_secondary_label = "Launch SaaS Platform" %}
+{% set hero_secondary_url = "https://app.neuralshielddigital.com/login" %}
 {% include "public/partials/hero_section.html" %}
 
-<section class="mx-auto grid max-w-7xl gap-8 px-5 py-16 md:px-8 lg:grid-cols-[0.72fr_0.28fr]">
-    <form action="/contact" method="post" class="rounded-[2rem] border border-white/6 bg-slate-900/70 p-8 shadow-[0_0_60px_rgba(34,211,238,0.05)]">
+<section class="mx-auto grid max-w-7xl gap-8 px-5 py-20 md:px-8 lg:grid-cols-[0.72fr_0.28fr]">
+    <form action="/contact" method="post" class="rounded-[2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(10,19,33,0.92),rgba(6,12,22,0.98))] p-8 shadow-[0_0_60px_rgba(34,211,238,0.05)]">
+        <div class="mb-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.32em] text-cyan-300">Inquiry Form</p>
+            <h2 class="mt-3 font-['Space_Grotesk'] text-3xl font-bold text-white">Tell us about the opportunity.</h2>
+            <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-400">Use this form for AI consulting, product planning, workflow automation, ML systems, generative AI, computer vision, MLOps, DevOps, and custom software requests.</p>
+        </div>
+
         <div class="grid gap-5 md:grid-cols-2">
             <div>
                 <label class="mb-2 block text-sm text-slate-300">Full name</label>
-                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="full_name" value="{{ form_data.full_name }}" required>
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-300/40" type="text" name="full_name" value="{{ form_data.full_name }}" required>
                 {% if form_errors.full_name %}<p class="mt-2 text-sm text-red-300">{{ form_errors.full_name[0] }}</p>{% endif %}
             </div>
             <div>
                 <label class="mb-2 block text-sm text-slate-300">Email</label>
-                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="email" name="email" value="{{ form_data.email }}" required>
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-300/40" type="email" name="email" value="{{ form_data.email }}" required>
                 {% if form_errors.email %}<p class="mt-2 text-sm text-red-300">{{ form_errors.email[0] }}</p>{% endif %}
             </div>
             <div>
                 <label class="mb-2 block text-sm text-slate-300">Phone / WhatsApp</label>
-                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="phone" value="{{ form_data.phone }}">
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-300/40" type="text" name="phone" value="{{ form_data.phone }}">
             </div>
             <div>
                 <label class="mb-2 block text-sm text-slate-300">Company</label>
-                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="company_name" value="{{ form_data.company_name }}">
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-300/40" type="text" name="company_name" value="{{ form_data.company_name }}">
             </div>
         </div>
         <div class="mt-5 grid gap-5">
             <div>
                 <label class="mb-2 block text-sm text-slate-300">Subject</label>
-                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="subject" value="{{ form_data.subject }}">
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-300/40" type="text" name="subject" value="{{ form_data.subject }}">
             </div>
             <div>
                 <label class="mb-2 block text-sm text-slate-300">Service interest</label>
-                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" type="text" name="service_interest" value="{{ form_data.service_interest }}" placeholder="AI Consulting, Automation, LLM Systems, etc.">
+                <input class="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-300/40" type="text" name="service_interest" value="{{ form_data.service_interest }}" placeholder="AI Consulting, Automation, LLM Systems, Python Engineering, etc.">
             </div>
             <div>
-                <label class="mb-2 block text-sm text-slate-300">Tell us about your requirement</label>
-                <textarea class="min-h-48 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3" name="message" required>{{ form_data.message }}</textarea>
+                <label class="mb-2 block text-sm text-slate-300">Project or requirement</label>
+                <textarea class="min-h-48 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-300/40" name="message" required>{{ form_data.message }}</textarea>
                 {% if form_errors.message %}<p class="mt-2 text-sm text-red-300">{{ form_errors.message[0] }}</p>{% endif %}
             </div>
         </div>
         <input type="hidden" name="source_page" value="{{ form_data.source_page or '/contact' }}">
-        <button class="mt-8 rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300" type="submit">Send Inquiry</button>
+        <div class="mt-8 flex flex-wrap gap-4">
+            <button class="rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300" type="submit">Send Inquiry</button>
+            <a href="/book-consultation" class="rounded-full border border-cyan-300/25 bg-white/5 px-6 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-300/50 hover:text-cyan-300">Book Consultation</a>
+        </div>
     </form>
 
     <aside class="space-y-6">
-        <div class="rounded-[1.75rem] border border-cyan-400/12 bg-slate-900/70 p-6">
+        <div class="rounded-[1.75rem] border border-cyan-400/12 bg-white/[0.03] p-6">
             <p class="text-xs uppercase tracking-[0.24em] text-cyan-300">Direct Contact</p>
             <div class="mt-5 space-y-3 text-sm text-slate-300">
                 <p>Business: <a class="text-cyan-300" href="mailto:contact@neuralshielddigital.com">contact@neuralshielddigital.com</a></p>
@@ -56,14 +69,21 @@
                 <p>Phone / WhatsApp: <a class="text-cyan-300" href="https://wa.me/919998344439">+91 9998344439</a></p>
             </div>
         </div>
-        <div class="rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-6">
-            <p class="text-xs uppercase tracking-[0.24em] text-cyan-300">Good For</p>
+        <div class="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6">
+            <p class="text-xs uppercase tracking-[0.24em] text-cyan-300">Good Fit For</p>
             <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-400">
-                <li>Custom software and AI product planning</li>
-                <li>Automation, NLP, CV, and ML discussions</li>
-                <li>MLOps / DevOps / deployment architecture</li>
-                <li>Consulting, discovery, and implementation requests</li>
+                <li>Enterprise AI roadmap and delivery planning</li>
+                <li>Automation, NLP, ML, CV, and LLM system discussions</li>
+                <li>Platform modernization and Python backend engineering</li>
+                <li>MLOps, DevOps, deployment architecture, and trusted rollout</li>
             </ul>
+        </div>
+        <div class="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-6">
+            <p class="text-xs uppercase tracking-[0.24em] text-cyan-300">Need Immediate Access?</p>
+            <p class="mt-4 text-sm leading-7 text-slate-400">If you are already a user of our SaaS platform, you can launch directly below.</p>
+            <a href="https://app.neuralshielddigital.com/login" class="mt-5 inline-flex rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-300/30 hover:text-cyan-200">
+                Launch SaaS Platform
+            </a>
         </div>
     </aside>
 </section>

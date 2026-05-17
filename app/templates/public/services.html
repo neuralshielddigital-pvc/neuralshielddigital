@@ -2,25 +2,59 @@
 
 {% block content %}
 {% set hero_eyebrow = "Services" %}
-{% set hero_title = "AI, software, and automation capabilities designed for real deployment." %}
-{% set hero_text = "From consulting and prototyping to enterprise delivery, we build systems that translate AI potential into measurable business capability." %}
+{% set hero_title = "AI, software, and automation capabilities designed for real enterprise deployment." %}
+{% set hero_text = "From strategic advisory to production engineering, NeuralShield Digital helps teams build intelligent systems that are secure, useful, and operationally sound." %}
+{% set hero_primary_label = "Book Consultation" %}
+{% set hero_primary_url = "/book-consultation" %}
+{% set hero_secondary_label = "Launch SaaS Platform" %}
+{% set hero_secondary_url = "https://app.neuralshielddigital.com/login" %}
 {% include "public/partials/hero_section.html" %}
 
-<section class="mx-auto max-w-7xl px-5 py-16 md:px-8">
+<section class="mx-auto max-w-7xl px-5 py-20 md:px-8">
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {% for service in services %}
-        <article class="group rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-7 transition hover:-translate-y-1 hover:border-cyan-300/25 hover:shadow-[0_0_45px_rgba(34,211,238,0.08)]">
+        <article class="group rounded-[1.75rem] border border-white/8 bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(8,15,28,0.96))] p-7 transition hover:-translate-y-1 hover:border-cyan-300/25 hover:shadow-[0_0_50px_rgba(34,211,238,0.08)]">
             <div class="inline-flex rounded-full border border-cyan-300/20 bg-cyan-400/10 px-3 py-1 text-xs uppercase tracking-[0.24em] text-cyan-300">{{ service.icon_name or "AI" }}</div>
             <h2 class="mt-5 font-['Space_Grotesk'] text-2xl font-semibold text-white">{{ service.name }}</h2>
             {% if service.tagline %}<p class="mt-2 text-cyan-300">{{ service.tagline }}</p>{% endif %}
             <p class="mt-4 text-sm leading-7 text-slate-400">{{ service.short_description }}</p>
-            <a href="/services/{{ service.slug }}" class="mt-6 inline-flex text-sm font-semibold text-cyan-300 transition group-hover:text-cyan-200">Read more</a>
+            <a href="/services/{{ service.slug }}" class="mt-6 inline-flex text-sm font-semibold text-cyan-300 transition group-hover:text-cyan-200">View service</a>
         </article>
         {% else %}
-        <div class="rounded-[1.75rem] border border-white/6 bg-slate-900/70 p-7 text-slate-400 md:col-span-2 xl:col-span-3">
+        <div class="rounded-[1.75rem] border border-white/8 bg-white/[0.03] p-7 text-slate-400 md:col-span-2 xl:col-span-3">
             Service offerings will appear here as they are published from the admin panel.
         </div>
         {% endfor %}
+    </div>
+</section>
+
+<section class="mx-auto max-w-7xl px-5 py-20 md:px-8">
+    <div class="rounded-[2rem] border border-cyan-400/12 bg-[linear-gradient(180deg,rgba(8,15,28,0.96),rgba(5,10,18,0.92))] p-8">
+        <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+            <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.32em] text-cyan-300">What You Can Expect</p>
+                <h2 class="mt-4 font-['Space_Grotesk'] text-3xl font-bold text-white">Services shaped around delivery quality, not just technical novelty.</h2>
+                <p class="mt-5 text-base leading-8 text-slate-300">We work with teams that need a practical partner for architecture, workflow design, implementation, modernization, and AI capability building.</p>
+            </div>
+            <div class="grid gap-4 md:grid-cols-2">
+                <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5">
+                    <h3 class="font-['Space_Grotesk'] text-lg font-semibold text-white">Roadmap clarity</h3>
+                    <p class="mt-3 text-sm leading-7 text-slate-400">Use-case prioritization, technical direction, and implementation planning aligned to real constraints.</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5">
+                    <h3 class="font-['Space_Grotesk'] text-lg font-semibold text-white">Modern engineering</h3>
+                    <p class="mt-3 text-sm leading-7 text-slate-400">Production-grade software, APIs, automation systems, and AI integrations designed for maintainability.</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5">
+                    <h3 class="font-['Space_Grotesk'] text-lg font-semibold text-white">Operational trust</h3>
+                    <p class="mt-3 text-sm leading-7 text-slate-400">Security-aware workflows, deployment discipline, observability, and lifecycle planning from the outset.</p>
+                </div>
+                <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-5">
+                    <h3 class="font-['Space_Grotesk'] text-lg font-semibold text-white">Flexible engagement</h3>
+                    <p class="mt-3 text-sm leading-7 text-slate-400">Discovery, architecture, delivery support, or end-to-end execution depending on what your team needs next.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
